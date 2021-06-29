@@ -18,7 +18,7 @@ public class ZipCodeService {
 	RestTemplate restTemplate;
 	
 	/*郵便番号検索API　リクエストURL*/
-	 private static final String URL = "https://zipcode.ibsnet.co.jp/api/search?zipcode={zipcode}";
+	 private static final String URL = "https://zipcloud.ibsnet.co.jp/api/search?zipcode={zipcode}";
 	 
 	 /*
 	  * 指定した郵便番号に紐づく郵便番号情報を取得する
@@ -26,6 +26,7 @@ public class ZipCodeService {
 	  * @return ZipCodeEntitiy
 	  */
 	 public ZipCodeEntity getZip(String zipcode) {
+		 
 		 
 		 //APiへアクセスして、結果を取得
 		 String json = restTemplate.getForObject(URL, String.class, zipcode);

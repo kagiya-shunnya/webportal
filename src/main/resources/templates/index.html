@@ -34,6 +34,18 @@
 	href="../static/css/ress.css">
 <link rel="stylesheet" th:href="@{/css/home.css}"
 	href="../static/css/home.css">
+	
+<!-- 追加課題（入力チェック -->
+<script type="text/javascript">
+    function check(){
+    	if (zipcode_form.zipcode.value == ""){
+    		alert("住所を入力してください");    //エラーメッセージを出力
+    		    return false;    //送信ボタン本来の動作をキャンセルします
+          }else{
+    			return true;    //送信ボタン本来の動作を実行します
+       }
+   }
+ </script>
 
 </head>
 
@@ -71,12 +83,12 @@
 			<div class="col-sm-6">
 				<div class="content-box">
 					<h2>住所検索 - 郵便番号</h2>
-					<form method="post" th:action="@{/zip}">
+					<form method="post" th:action="@{/zip}" name="zipcode_form">
 						<div class="input-group">
 							<input type="number" class="form-control" name="zipcode"
 								placeholder="郵便番号 : XXXXXXX"> <span
 								class="input-group-btn">
-								<button type="submit" class="btn btn-success">検索</button>
+								<button type="submit" class="btn btn-success"onclick="return check()">検索</button>
 							</span>
 						</div>
 					</form>
