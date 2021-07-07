@@ -44,8 +44,8 @@ public class WeatherService {
 			 
 			 
 			 //追加課題
-			 // String description = node.get("description").asText();
-			 // weatherEntity.setDescription(description);
+			 String description = node.get("description").get("text").asText();
+			 weatherEntity.setDescription(description);
 			 
 			 //forecast(配列)をForEachで配列分繰り返す
 			 for(JsonNode forecast : node.get("forecasts")) {

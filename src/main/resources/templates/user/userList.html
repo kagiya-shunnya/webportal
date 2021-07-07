@@ -34,18 +34,6 @@
 	href="../static/css/ress.css">
 <link rel="stylesheet" th:href="@{/css/home.css}"
 	href="../static/css/home.css">
-	
-<!-- 追加課題（入力チェック -->
-<script type="text/javascript">
-    function check(){
-    	if (zipcode_form.zipcode.value == ""){
-    		alert("住所を入力してください");    //エラーメッセージを出力
-    		    return false;    //送信ボタン本来の動作をキャンセルします
-          }else{
-    			return true;    //送信ボタン本来の動作を実行します
-       }
-   }
- </script>
 
 </head>
 
@@ -76,63 +64,31 @@
 		</div>
 	</nav>
 
-	<!-- 住所検索機能 -->
-	
+	<!-- コンテンツ -->
 	<div class="container">
-		<div class="row">
-
-			<div class="col-sm-6">
-				<div class="content-box">
-					<h2>住所検索 - 郵便番号</h2>
-					<form method="post" th:action="@{/zip}" name="zipcode_form">
-						<div class="input-group">
-							<input type="number" class="form-control" name="zipcode"
-								placeholder="郵便番号 : XXXXXXX"> <span
-								class="input-group-btn">
-								<button type="submit" class="btn btn-success"onclick="return check()">検索</button>
-							</span>
-						</div>
-					</form>
-				</div>
-			</div>
-
-
-		
-	
-		<!-- 天気予報機能 -->
- 
-
-			<div class="col-sm-6">
-				<div class="content-box">
-					<h2>札幌の天気予報</h2>
-					<form method="get" th:action="@{/weather}">
-						<button type="submit"id="weather" class="btn btn-success">もっと詳しく</button>
-					</form>
-				</div>
-			</div>
-			
-		<!-- タスク管理機能 -->
-			<div class="col-sm-6">
-				<div class="content-box">
-					<h2>直近のタスク</h2>
-					<form method="get" th:action="@{/task/tasklist}">
-						<button type="submit"id="task" class="btn btn-success">タスク管理へ</button>
-					</form>
-				</div>
-			</div>
-			
-			<div class="col-sm-6" role="presentation" sec:authorize="hasRole('ADMIN')">
-			<div class="content-box">
-			   <h2>ユーザ管理</h2>
-			   <form method="get" th:action="@{/user/list}">
-			      <button type="submit" class="btn btn-success">ユーザ管理へ</button>
-			   </form>
-			</div>
-			</div>
+		<div class="content-box">
+		<table class="table" th:each="userlists : ${userEntity.userlist}">
+  		<thead>
+    		<tr>
+     	 	<th scope="col">ユーザ(メールアドレス)</th>
+      		<th scope="col">アカウント有効性</th>
+      		<th scope="col">ユーザ名</th>
+      		<th scope="col">ダークモード</th>
+      		<th scope="col">権限</th>
+    		</tr>
+  		</thead>
+  		<tbody>
+    		<tr>
+      		<td th:text="${userlists.User_id}"></td>
+      		<td th:text="${userlists.enabled}"></td>
+      		<td th:text="${userlists.user_name}"></td>
+      		<td th:text="${userlists.darkmode}"><td>
+      		<td th:text="${userlists.role}"><td>
+    		</tr>
+  		</tbody>
+		</table>
 		</div>
 	</div>
-		
-
 
 	<!-- 共通スクリプト -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

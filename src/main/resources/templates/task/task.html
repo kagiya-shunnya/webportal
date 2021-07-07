@@ -34,6 +34,21 @@
 	href="../static/css/ress.css">
 <link rel="stylesheet" th:href="@{/css/home.css}"
 	href="../static/css/home.css">
+	
+	
+	<script type="text/javascript">
+    function check(){
+    	//if (zipcode_form.zipcode.value == ""){
+    		var res = confirm("完了したタスクを削除しますが本当によろしいですか？");    //エラーメッセージを出力
+    		if(res == true){
+    			
+    		}else{
+    			
+    		}
+
+       //}
+   }
+ </script>
 
 </head>
 
@@ -82,7 +97,7 @@
 	        
 	      <ul th:each="task : ${taskEntity.tasklist}">
 			    <li>
-			          <a th:href="@{'/task/delete/' + ${task.id}}">
+			          <a th:href="@{'/task/delete/' + ${task.id}}"onclick="return check()">
 			          <span th:text="${task.comment}"></span>
 			          </a>
 			   
