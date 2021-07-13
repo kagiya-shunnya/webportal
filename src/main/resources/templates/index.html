@@ -120,6 +120,20 @@
 					</form>
 				</div>
 			</div>
+		<!-- グルメ検索機能 -->
+			<div class="col-sm-6">
+				<div class="content-box">
+					<h2>飲食店検索 - 北海道</h2>
+					<form method="post" th:action="@{/gourmet}">
+						<div class="input-group">
+							<input class="form-control" name="shopname"> <span
+								class="input-group-btn">
+								<button type="submit" class="btn btn-success">検索</button>
+							</span>
+						</div>
+					</form>
+				</div>
+			</div>
 			
 			<div class="col-sm-6" role="presentation" sec:authorize="hasRole('ADMIN')">
 			<div class="content-box">
