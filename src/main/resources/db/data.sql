@@ -24,3 +24,8 @@ INSERT INTO task (id, user_id, priority, title, comment, limitday) VALUES (2, 'a
 INSERT INTO task (id, user_id, priority, title, comment, limitday) VALUES (3, 'isida@xxx.co.jp', 'LOW','c', 'それやる', '2020-03-31');
 INSERT INTO task (id, user_id, priority, title, comment, limitday) VALUES (4, 'sano@xxx.co.jp', 'LOW','d', 'どれやる', '2020-03-25');
 INSERT INTO task (id, user_id, priority, title, comment, limitday) VALUES (5, 'abe@xxx.co.jp', 'LOW','e', 'もっとやる', '2020-04-20');
+
+/*受験報告のデータ*/
+INSERT INTO report (user_name, class_number , student_number, division, day, company_name) VALUES ('石田悠介', 'S3A0', '00', '有効','2020-03-23','株式会社XX');
+INSERT INTO report (user_name, class_number , student_number, division, day, company_name) VALUES ('石田悠介', 'S3A0', '00', '有効','2020-04-23','株式会社XX');
+INSERT INTO report (user_name, class_number , student_number, division, day, company_name) VALUES ('石田悠介', 'S3A0', '00', '有効','2020-02-23','株式会社XX');

@@ -60,7 +60,13 @@ h1 {
 	color: black;
 	background-color: black;
 }
+.table{
+  border-collapse:collapse;
+}
+
 .th{
-	color:black;
+  border:1px solid #000;
+  word-break:break-all;
+  overflow: auto;
 }
 

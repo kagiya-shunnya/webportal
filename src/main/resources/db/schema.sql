@@ -30,3 +30,14 @@ CREATE TABLE IF NOT EXISTS task (
   comment VARCHAR(200),
   limitday DATE
 );
+
+/* 受験報告テーブル */
+CREATE TABLE IF NOT EXISTS report (
+  user_name VARCHAR(50),
+  class_number VARCHAR(10),
+  student_number VARCHAR(10),
+  division VARCHAR(50),
+  day DATE,
+  company_name VARCHAR(50)
+);
+

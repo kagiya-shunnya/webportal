@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 
 <meta charset="UTF-8">
-<title>WebPortal Main</title>
+<title>WebPortal Login</title>
 
 <!-- モバイル設定 -->
 <meta id="viewport" name="viewport"
@@ -22,7 +21,8 @@
 	href="../static/img/favicon.ico">
 <link rel="shortcut icon" th:href="@{/img/favicon.ico}">
 <link rel="apple-touch-icon" th:href="@{/img/favicon.ico}">
-<link rel="apple-touch-icon" th:href="@{/img/favicon.ico}" sizes="192x192">
+<link rel="apple-touch-icon" th:href="@{/img/favicon.ico}"
+	sizes="192x192">
 <link rel="apple-touch-icon" th:href="@{/img/favicon.ico}" sizes="58x58">
 
 <!-- スタイル設定 -->
@@ -40,9 +40,9 @@
 <body th:classappend="${session.isDarkmode} ? 'mode-dark'">
 
 	<!-- 共通ヘッダ -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-success">
 		<h1>
-			<a class="navbar-brand title-font" th:href="@{/}">WebPortal.com</a>
+			<a class="navbar-brand title-font" th:href="@{/}">就活ポータル.com</a>
 		</h1>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarToggler" aria-controls="navbarToggler"
@@ -65,37 +65,69 @@
 	</nav>
 
 	<!-- コンテンツ -->
-	<div class="container">
+		<div class="container">
 		<div class="content-box">
+		<h1>受験報告一覧画面</h1>
+		
 		<div style="text-align:left">
-		<h1>ユーザ一覧</h1>
-		<table  class="table table-light" >
-  		<thead >
+		<p>絞り込み検索</p>
+		　　　　　　
+		<input type="radio" >日時　　
+		<input type="radio" >クラス　　
+		<input type="radio" >氏名　　
+		<input type="radio" >企業名　　
+		<input type="radio" >受験報告状態　　
+		
+			<div class="input-group">
+			  <input type="number" class="form-control" name="zipcode"
+				placeholder="検索キーワード">
+				 <span class="input-group-btn">
+					<button type="submit" class="btn btn-success"onclick="return check()">検索</button>
+				</span>
+				</div>
+				<hr>
+		</div>
+				<table border="1" class="table">
+  		<thead bgcolor = "success">
     		<tr>
-     	 	<th scope="col">ユーザ(メールアドレス)</th>
-      		<th scope="col">アカウント有効性</th>
-      		<th scope="col">ユーザ名</th>
-      		<th scope="col">ダークモード</th>
-      		<th scope="col">権限</th>
+      		<th scope="col">氏名</th>
+      		<th scope="col">クラス</th>
+      		<th scope="col">番号</th>
+      		<th scope="col">企業名</th>
+      		<th scope="col">受験報告状態</th>
+      		<th scope="col">日付</th>
+      		<th scope="col">詳細</th>
     		</tr>
   		</thead>
-  		<tbody>
-  		    <tr th:each="userlists : ${userEntity.userlist}">
-      		<td th:text="${userlists.user_id}"></td>
-      		<td th:text="${userlists.enabled}"></td>
-      		<td th:text="${userlists.user_name}"></td>
-      		<td th:text="${userlists.darkmode}"><td>
-      		<td th:text="${userlists.role}"><td>
-      		<hr>
-      		</tr>
+  		<tbody bgcolor = "#f0f0f0">
+    		<tr th:each="reportlists : ${reportEntity.reportlist}">
+      		<td th:text="${reportlists.user_name}"></td>
+      		<td th:text="${reportlists.class_number}"></td>
+      		<td th:text="${reportlists.student_number}"></td>
+      		<td th:text="${reportlists.company_name}"></td>
+      		<td th:text="${reportlists.division}"></td>
+      		<td th:text="${reportlists.day}"></td>
+      		
+      		<td>
+      		<form  method="get" th:action="@{/detail}">
+      		<button  type="submit" class="btn btn-success">詳細</button>
+      		</form>
+      		</td>
+
+    		</tr>
   		</tbody>
 		</table>
-		<form method="get" th:action="@{/user/insert}">
+		<div style="text-align:right">
+		<!-- <form method="get" th:action="@{/user/insert}"> -->
 		<button class="btn btn-outline-light my-2 my-sm-0" type="submit" style = "background-color:orange">作成</button>
-		</form>
+		<!-- </form> -->
 		</div>
+		<form method="post" th:action="@{/report/csv}"> 
+	     <button type="submit" class="btn btn-primary">CSV出力</button>
+	    </form> 
 		</div>
 	</div>
+
 
 	<!-- 共通スクリプト -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

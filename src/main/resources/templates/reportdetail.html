@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 
 <meta charset="UTF-8">
-<title>WebPortal Main</title>
+<title>WebPortal Login</title>
 
 <!-- モバイル設定 -->
 <meta id="viewport" name="viewport"
@@ -22,7 +21,8 @@
 	href="../static/img/favicon.ico">
 <link rel="shortcut icon" th:href="@{/img/favicon.ico}">
 <link rel="apple-touch-icon" th:href="@{/img/favicon.ico}">
-<link rel="apple-touch-icon" th:href="@{/img/favicon.ico}" sizes="192x192">
+<link rel="apple-touch-icon" th:href="@{/img/favicon.ico}"
+	sizes="192x192">
 <link rel="apple-touch-icon" th:href="@{/img/favicon.ico}" sizes="58x58">
 
 <!-- スタイル設定 -->
@@ -40,9 +40,9 @@
 <body th:classappend="${session.isDarkmode} ? 'mode-dark'">
 
 	<!-- 共通ヘッダ -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-success">
 		<h1>
-			<a class="navbar-brand title-font" th:href="@{/}">WebPortal.com</a>
+			<a class="navbar-brand title-font" th:href="@{/}">就活ポータル.com</a>
 		</h1>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarToggler" aria-controls="navbarToggler"
@@ -65,37 +65,65 @@
 	</nav>
 
 	<!-- コンテンツ -->
-	<div class="container">
+		<div class="container">
 		<div class="content-box">
-		<div style="text-align:left">
-		<h1>ユーザ一覧</h1>
-		<table  class="table table-light" >
-  		<thead >
-    		<tr>
-     	 	<th scope="col">ユーザ(メールアドレス)</th>
-      		<th scope="col">アカウント有効性</th>
-      		<th scope="col">ユーザ名</th>
-      		<th scope="col">ダークモード</th>
-      		<th scope="col">権限</th>
-    		</tr>
+		<h1>受験報告詳細画面</h1>
+		<hr>
+		
+		<table border="1" class="table"style="table-layout:fixed;width:100%;">
+  		<thead bgcolor = "success">
+
   		</thead>
-  		<tbody>
-  		    <tr th:each="userlists : ${userEntity.userlist}">
-      		<td th:text="${userlists.user_id}"></td>
-      		<td th:text="${userlists.enabled}"></td>
-      		<td th:text="${userlists.user_name}"></td>
-      		<td th:text="${userlists.darkmode}"><td>
-      		<td th:text="${userlists.role}"><td>
-      		<hr>
-      		</tr>
-  		</tbody>
+  		<tbody bgcolor = "#f0f0f0">
+  		 	<tr>
+  		 	<th scope="col"width="200"bgcolor = "success">氏名</th>
+  		 	<th scope="col">情報太郎</th>
+    		</tr>
+    		 <tr>
+  		 	<th scope="col"bgcolor = "success">クラス</th>
+  		 	<th scope="col">S3A3</th>
+    		</tr>  	
+    		 <tr>
+  		 	<th scope="col"bgcolor = "success">番号</th>
+  		 	<th scope="col">00</th>
+    		</tr> 
+    		 <tr>
+  		 	<th scope="col"bgcolor = "success">企業名</th>
+  		 	<th scope="col">株式会社００</th>
+    		</tr> 
+    		 <tr>
+  		 	<th scope="col"bgcolor = "success">日付</th>
+  		 	<th scope="col">2021-07-20</th>
+    		</tr> 
+    		 <tr>
+  		 	<th scope="col"bgcolor = "success">試験会場</th>
+  		 	<th scope="col">札幌</th>
+    		</tr> 
+    		<tr>
+    		<th scope="col"bgcolor = "success">試験場所</th>
+  		 	<th scope="col">北海道情報専門学校 9F 901教室</th>
+    		</tr> 
+    		<tr>
+    		<th scope="col"bgcolor = "success">試験内容</th>
+  		 	<th scope="col">面接</th>
+    		</tr> 
+    		<tr>
+    		<th scope="col"bgcolor = "success">面接内容</th>
+  		 	<th scope="col">最終面接</th>
+    		</tr> 
+    		<tr height = "600" style="word-break:break-all;">
+    		<th scope="col"bgcolor = "success">出題内容</th>
+  		 	<th scope="col" style="text-align:left">あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</th>
+    		</tr> 
+    		
+    		
+    	</tbody>
 		</table>
-		<form method="get" th:action="@{/user/insert}">
-		<button class="btn btn-outline-light my-2 my-sm-0" type="submit" style = "background-color:orange">作成</button>
-		</form>
 		</div>
 		</div>
-	</div>
+
+
+
 
 	<!-- 共通スクリプト -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
